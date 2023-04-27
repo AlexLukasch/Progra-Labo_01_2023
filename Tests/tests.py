@@ -6,9 +6,6 @@
 from os import system
 system('cls')
 
-def confirmar_continuar():
-    system('pause')
-
 def confirmar_continuar_input():
     input("Presione enter tecla para continuar...\n")
     #Por el momento solo funciona con enter#

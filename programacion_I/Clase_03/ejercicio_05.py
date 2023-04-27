@@ -4,6 +4,9 @@
 # ellos.
 # Es por eso que te piden que desarrolles un pequeño programa el cual basado en la lista
 # heroes_info se puedan listar los datos de cada héroe con el siguiente formato:
+from os import system
+system('cls')
+
 heroes_info = [
     {
         "Nombre":"Super Girl",
@@ -37,39 +40,28 @@ heroes_info = [
 
 #Recorro la lista de heroes, donde heroe es un diccionario#
 for heroe in heroes_info:
-    #Quito las repeticiones de habilidades en cada heroe#
+    #Quito las repeticiones de habilidades en cada heroe con set#
     set_habilidades = set(heroe["Habilidades"])
     print(f"ID: {heroe['ID']}, Codename: {heroe['Nombre']}")
     print(f"Identidad: {heroe['Identidad']}, Origen: {heroe['Origen']}")
 
     #Como set_habilidades ya tiene la lista de habilidades, no pongo ['habilidades'] aca"#
     # print(f"Habilidades: {set_habilidades}")
-    habilidades = ""
-    for habilidad in set_habilidades:
-        i = 0
-        if(i==0):
-            print("El primer elemento")
-            habilidades += "Habilidades: "
-            habilidades += habilidad
-            habilidades += " | "
-        elif(i+1==len(set_habilidades)):
-            print("El ultimo elemento")
-            habilidades += habilidad
-        else:
-            habilidades += habilidad
-            habilidades += " | "
+    habilidades = "Habilidades: "
+    habilidades_string = ""
+    i = 0
 
-        i = i + 1
-'''
-    for i in range(len(set_habilidades)):
+    for habilidad in set_habilidades:
         if(i==0):
-            print("El primer elemento")
-            habilidades += "Habilidades: "
-            print("Habilidades")
+            habilidades_string += habilidad
+            habilidades_string += " | "
         elif(i+1==len(set_habilidades)):
-            print("El ultimo elemento")
+            habilidades_string += habilidad
         else:
-            print(i)
-'''
-print(habilidades)
-print("-------------------------------------------\n\n")
+            habilidades_string += habilidad
+            habilidades_string += " | "
+        i = i + 1
+
+    habilidades += habilidades_string
+    print(habilidades)
+    print("----------------------------------------\n\n")
