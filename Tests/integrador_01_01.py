@@ -14,31 +14,35 @@ def convertir_strings_numeros():
         heroe['fuerza'] = int(heroe['fuerza'])
 
 def mostrar_una_key(lista:list, key:str):
-    for heroe in lista:
-        print(f"{heroe[key]}")
+    if(type(lista) == list and len(lista)>0):
+        for heroe in lista:
+            print(f"{heroe[key]}")
 
 def mostrar_dos_keys(lista:list, key1:str, key2:str):
-    for heroe in lista:
-        print(f"{key1}: {heroe[key1]}")
-        print(f"{key2}: {heroe[key2]}\n")
+    if(type(lista) == list and len(lista)>0):
+        for heroe in lista:
+            print(f"{key1}: {heroe[key1]}")
+            print(f"{key2}: {heroe[key2]}\n")
 
 def buscar_maximo(lista:list, key_altura:str)->dict:
-    flag_altura = 0
-    for heroe in lista:
-        if(flag_altura == 0 or heroe[key_altura] > max_altura):
-            max_altura = heroe[key_altura]  
-            flag_altura = 1 
-            mas_alto = heroe
-    return mas_alto
+    if(type(lista) == list and len(lista)>0):
+        flag_altura = 0
+        for heroe in lista:
+            if(flag_altura == 0 or heroe[key_altura] > max_altura):
+                max_altura = heroe[key_altura]  
+                flag_altura = 1 
+                mas_alto = heroe
+        return mas_alto
 
 def buscar_minimo(lista:list, key_altura:str)->dict:
-    flag_altura = 0
-    for heroe in lista:
-        if(flag_altura == 0 or heroe[key_altura] < min_altura):
-            min_altura = heroe[key_altura]
-            flag_altura = 1
-            mas_bajo = heroe
-    return mas_bajo
+    if(type(lista) == list and len(lista)>0):
+        flag_altura = 0
+        for heroe in lista:
+            if(flag_altura == 0 or heroe[key_altura] < min_altura):
+                min_altura = heroe[key_altura]
+                flag_altura = 1
+                mas_bajo = heroe
+        return mas_bajo
 
 def mostrar_dos_datos(dict:dict, key_nombre:str, key_altura:str, mensaje_nombre:str, mensaje_altura:str):
     nombre_mas_alto = dict[key_nombre]
@@ -47,15 +51,16 @@ def mostrar_dos_datos(dict:dict, key_nombre:str, key_altura:str, mensaje_nombre:
     print(f"{mensaje_altura} {altura}\n")
 
 def mostrar_altura_prom(lista:list, key_altura:str):
-    acumulador_altura = 0
-    contador_heroes = 0
-    for i in range(len(lista)):
-        acumulador_altura = acumulador_altura + lista[i][key_altura]
-        contador_heroes = contador_heroes + 1
-        
-    prom_altura = acumulador_altura / contador_heroes
-    prom_altura = "{:.2f}".format(prom_altura)
-    print(f"El promedio de altura de los superhéroes es: {prom_altura}cm\n")
+    if(type(lista) == list and len(lista)>0):
+        acumulador_altura = 0
+        contador_heroes = 0
+        for i in range(len(lista)):
+            acumulador_altura = acumulador_altura + lista[i][key_altura]
+            contador_heroes = contador_heroes + 1
+            
+        prom_altura = acumulador_altura / contador_heroes
+        prom_altura = "{:.2f}".format(prom_altura)
+        print(f"El promedio de altura de los superhéroes es: {prom_altura}cm\n")
 
 #Convierto los datos necesarios de string a int o float para poder hacer cálculos#
 convertir_strings_numeros()

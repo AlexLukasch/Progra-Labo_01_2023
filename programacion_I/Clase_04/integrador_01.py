@@ -1,4 +1,4 @@
-#Ejercicio integrador_01 Alexander Lukasch Belbey 1B#
+#Ejercicio integrador_01_00 Alexander Lukasch Belbey 1B#
 from data_stark import lista_personajes
 from os import system
 import math

@@ -6,6 +6,24 @@
 from os import system
 system('cls')
 
+def buscar_datos_por_clave(lista:list, clave:str)->list:
+    if(type(lista) == list and len(lista)>0):
+        lista_datos = []
+        for elemento in lista:
+            lista_datos.append(elemento[clave])
+    else:
+        print("ERROR. La lista es inválida o esta vacía.\n")
+    return lista_datos
+
+def contar_incidencias_por_criterio(lista:list, clave:str, lista_filtrada:list)->dict:
+    if(type(lista) == list and len(lista)>0):
+        diccionario_filtrado = {}
+        for elemento in lista:
+            for elemento_filtrado in lista_filtrada:
+                if(elemento[clave] == lista_filtrada[elemento_filtrado]):
+                    diccionario_filtrado[elemento_filtrado[clave]] += 1
+    return diccionario_filtrado
+
 def confirmar_continuar_input():
     input("Presione enter tecla para continuar...\n")
     #Por el momento solo funciona con enter#

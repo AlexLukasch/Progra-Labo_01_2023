@@ -26,8 +26,25 @@ lista_personajes =\
   }
 ]
 
-print("Tipo de dato:\n")
-print(type(lista_personajes))
+lista_colores_ojos =\
+[
+    {
+        "Blue": "Thor, Iron Man"
+    },
+    {
+        "Brown": "Dr.Strange"
+    }
+]
 
-for heroe in lista_personajes:
-    print(type(heroe))
+def mostrar_una_key(lista:list, key:str, mensaje_key_1:str):
+    if(type(lista) == list and len(lista)>0):
+        for elemento in lista:
+            print(f"{mensaje_key_1}{elemento[key]}")
+
+
+
+#mostrar_una_key(lista_colores_ojos, "Blue", "Color X:")
+if(lista_colores_ojos["Brown"] == lista_personajes[0]["color_ojos"]):
+    print("HAY COINCIDENCIA\n")
+else:
+    print("ESTA TODO MAL\n")
