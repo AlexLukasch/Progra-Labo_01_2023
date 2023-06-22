@@ -1,5 +1,12 @@
 import pygame
 from Donas import *
+BLANCO = (255,255,255)
+NEGRO = (0,0,0)
+ROJO = (255,0,0)
+AZUL = (0,0,255)
+VERDE = (0,255,0)
+AZUL_CLARO = (0,150,255)
+
 LARGO = 800
 ALTO = 800
 SCREEN_SIZE = (LARGO,ALTO)
@@ -13,10 +20,10 @@ IZQUIERDA = 0
 # FUENTE
 fuente = pygame.font.SysFont("Arial", 60)# Le pongo una fuente de texto
 # PUNTAJE 
-SCORE = 
+SCORE = 0
 
 tick = pygame.USEREVENT + 0 #Defino un evento personalizado
-pygame.time.set_timer(tick, 50)
+pygame.time.set_timer(tick, 35)
 
 #PANTALLA
 screen = pygame.display.set_mode(SCREEN_SIZE)
@@ -40,8 +47,8 @@ rectangulo_homero.width = 200
 rectangulo_homero.height = 200
 
 x = 493
-y = 658
-z = 4
+y = 645
+z = 40
 
 rectangulo_boca = pygame.Rect(x,y,z,z)
 
@@ -67,7 +74,9 @@ while flag:
         imagen_homero = imagen_homero_derecha
         nueva_x = rectangulo_homero.x + 10
         if nueva_x > 0 and nueva_x < LARGO - rectangulo_homero.width:
-            rectangulo_homero.x += 10
+            # rectangulo_homero.x += 10
+            personaje["rectangulo"].x += 10
+            personaje["rect_boca"].x += 10
 
     if lista_teclas[pygame.K_LEFT]:
         #imagen_homero_izquierda = pygame.image.load("Progra-Labo_01_2023\programacion_I\Clase_17(progra)\Recursos\izquierda.png")
@@ -75,7 +84,9 @@ while flag:
         imagen_homero = imagen_homero_izquierda
         nueva_x = rectangulo_homero.x - 10
         if nueva_x > 0 and nueva_x < LARGO:
-            rectangulo_homero.x -= 10
+            # rectangulo_homero.x -= 10
+            personaje["rectangulo"].x -= 10
+            personaje["rect_boca"].x -= 10
 
     screen.blit(fondo, (0,0))
     screen.blit(imagen_homero,rectangulo_homero)
@@ -85,7 +96,11 @@ while flag:
 
     verificar_colision(lista_donas, personaje)
 
-    texto = fuente.render(f"SCORE")
+    texto = fuente.render(f"SCORE: {personaje['score']}", False, VERDE, AZUL_CLARO)
+    screen.blit(texto,(0,0))
+
+    pygame.draw.rect(screen,AZUL,personaje["rectangulo"],2)
+    pygame.draw.rect(screen,VERDE,personaje["rect_boca"],2)
 
     pygame.display.update()
 

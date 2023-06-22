@@ -19,7 +19,7 @@ def crear_dona(x, y, ancho, alto, path):
 def crear_lista_donas(cantidad):
     lista = []
     for i in range(cantidad):
-        x = random.randrange(0, 740, 60)
+        x = random.randrange(70, 670, 60)
         y = random.randrange(-1000, 0, 60)
         diccionario = crear_dona(x,y,60,60,"Progra-Labo_01_2023\programacion_I\Clase_16(labo)\Recursos\dona.png")
         lista.append(diccionario)
@@ -34,13 +34,14 @@ def update_donas(lista_donas):
 def verificar_colision(lista_donas, personaje):
     for dona in lista_donas:
         rectangulo = pygame.Rect(personaje["rectangulo"])
-        if rectangulo.colliderect(dona["rectangulo"]):
+        if personaje["rect_boca"].colliderect(dona["rectangulo"]):
             print("Colisiono")
+            personaje["score"] += 1
             desaparecer_dona(dona)
         if dona["rectangulo"].y > 720:
             desaparecer_dona(dona)
             
 def desaparecer_dona(dona):
-    dona["rectangulo"].x = random.randrange(0.740,60)
+    dona["rectangulo"].x = random.randrange(70,670,60)
     dona["rectangulo"].y = random.randrange(-1000,0,60)
  
